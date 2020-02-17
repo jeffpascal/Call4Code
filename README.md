@@ -1,7 +1,7 @@
 # TODO:
 
 1. Create Slider with year selection
-2. Find out how to create hot spots
+2. Find out how to create hot spots To Study: https://developers.google.com/maps/documentation/javascript/shapes#circles
 3. Create different instances of map by years and add hostpots based on data
 
 # Install
