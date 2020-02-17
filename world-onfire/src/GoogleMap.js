@@ -1,27 +1,41 @@
-import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+/* global google */
+import React, {Fragment} from "react";
+import {
+  withGoogleMap,
+  GoogleMap,
+  withScriptjs,
+  Marker,
+  Circle
+} from "react-google-maps";
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
-
-export class MapContainer extends Component {
-  render() {
+const Map = props => {
     return (
-      <Map
-        google={this.props.google}
-        zoom={2}
-        style={mapStyles}
-        initialCenter={{
-         lat: -1.2884,
-         lng: 36.8233
-        }}
-      />
+      <GoogleMap
+        defaultZoom={props.zoom}
+        defaultCenter={props.center}
+      >
+        {props.places.map(place => {
+          return (
+            <Fragment key={place.id}>
+              <Marker
+                position={{
+                  lat: parseFloat(place.latitude),
+                  lng: parseFloat(place.longitude)
+                }}
+              />
+              {place.circle && <Circle
+                defaultCenter={{
+                  lat: parseFloat(place.latitude),
+                  lng: parseFloat(place.longitude)
+                }}
+                radius={place.circle.radius}
+                options={place.circle.options}
+              />}
+            </Fragment>
+          );
+        })}
+      </GoogleMap>
     );
-  }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyCTTduBC1YUDGO5gLKi9edM76J0WPoB6EE'
-})(MapContainer);
+export default withScriptjs(withGoogleMap(Map));
