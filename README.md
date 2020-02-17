@@ -5,7 +5,8 @@
 # Install
 1. clone
 2. cd world-onfire
-3. npm run start
+3. npm install
+4. npm run start
 
 # Files:
 
