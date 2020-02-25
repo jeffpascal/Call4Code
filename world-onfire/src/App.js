@@ -63,12 +63,11 @@ function App() {
         <input
           id="yearSlider"
           className="slider"
-          data-slider-id="yearSliderIncremental"
-          type="text"
-          data-slider-min="2000"
-          data-slider-max="2040"
-          data-slider-step="1"
-          data-slider-value="2020"
+          type="range"
+          name="type-range"
+          min="2015"
+          max="2020"
+          value="2017"
         />
         <Map
           center={{ lat: 40.64, lng: -73.96 }}
